@@ -106,6 +106,11 @@ class sorting {
     }
 
     // merge sort 
+    // Approach:
+    // 1. Divide the array into two halves recursively.
+    // 2. Continue dividing until each half has one element.
+    // 3. Merge both halves in sorted order.
+    // 4. Copy the merged elements back into the original array.
 
     void merge2(int left, int mid, int right) {
         vector < int > temp;
