@@ -9,7 +9,7 @@ class sorting {
     private:
 
         vector < int > arr;
-        int n;
+    int n;
 
     public:
 
@@ -106,6 +106,7 @@ class sorting {
     }
 
     // merge sort 
+
     // Approach:
     // 1. Divide the array into two halves recursively.
     // 2. Continue dividing until each half has one element.
@@ -161,6 +162,48 @@ class sorting {
         // Time: (O(n log n))
         // Auxiliary space: (O(n))
     }
+
+    // quick sort 
+
+    // Approach:
+    // 1. Choose a pivot element from the array.
+    // 2. Partition the array so smaller elements are on the left and greater elements are on the right of the pivot.
+    // 3. Recursively apply Quick Sort to both partitions.
+    // 4. Stop when a partition has zero or one element.
+
+    int partition(int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+
+        swap(arr[i + 1], arr[high]);
+        return i + 1;
+    }
+
+    void quick1(int low, int high) {
+        if (low >= high) {
+            return;
+        }
+
+        int p = partition(low, high);
+
+        quick1(low, p - 1);
+        quick1(p + 1, high);
+    }
+
+    void quick_sort() {
+        quick1(0, n - 1);
+    }
+
+    // Average time: (O(nlog n))
+    // Worst-case time: (O(n^2))
+    // Average auxiliary space: (O(log n))
 
 
 };
