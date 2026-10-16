@@ -167,8 +167,7 @@ class sorting {
 
     // Approach:
     // 1. Choose a pivot element from the array.
-    // 2. Partition the array so smaller elements are on the left
-    //    and greater elements are on the right of the pivot.
+    // 2. Partition the array so smaller elements are on the left and greater elements are on the right of the pivot.
     // 3. Recursively apply Quick Sort to both partitions.
     // 4. Stop when a partition has zero or one element.
 
