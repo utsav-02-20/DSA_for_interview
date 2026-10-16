@@ -8,7 +8,7 @@ typedef ll ton;
 class sorting {
     private:
 
-        vector < int > arr;
+    vector < int > arr;
     int n;
 
     public:
@@ -167,7 +167,8 @@ class sorting {
 
     // Approach:
     // 1. Choose a pivot element from the array.
-    // 2. Partition the array so smaller elements are on the left and greater elements are on the right of the pivot.
+    // 2. Partition the array so smaller elements are on the left
+    //    and greater elements are on the right of the pivot.
     // 3. Recursively apply Quick Sort to both partitions.
     // 4. Stop when a partition has zero or one element.
 
@@ -197,6 +198,7 @@ class sorting {
         quick1(p + 1, high);
     }
 
+
     void quick_sort() {
         quick1(0, n - 1);
     }
@@ -204,6 +206,49 @@ class sorting {
     // Average time: (O(nlog n))
     // Worst-case time: (O(n^2))
     // Average auxiliary space: (O(log n))
+
+    // Heap Sort
+
+    // Approach:
+    // 1. Build a max heap from the array.
+    // 2. Swap the root (maximum element) with the last element.
+    // 3. Reduce the heap size and heapify the root.
+    // 4. Repeat until the array is sorted.
+
+    void heapify(int size, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < size && arr[left] > arr[largest]) {
+            largest = left;
+        }
+
+        if (right < size && arr[right] > arr[largest]) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(arr[i], arr[largest]);
+            heapify(size, largest);
+        }
+    }
+
+    void heap_sort() {
+        // Build max heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(n, i);
+        }
+
+        // Extract maximum elements
+        for (int i = n - 1; i > 0; i--) {
+            swap(arr[0], arr[i]);
+            heapify(i, 0);
+        }
+    }
+    
+    // Time: (O(nlog n))
+    // Auxiliary space: (O(log n))
 
 
 };
